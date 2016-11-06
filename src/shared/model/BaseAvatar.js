@@ -21,8 +21,7 @@ function BaseAvatar(player)
     this.angularVelocity = 0;
     this.alive           = true;
     this.printing        = false;
-    this.score           = 0;
-    this.roundScore      = 0;
+    this.scorekeeper     = new Score(this.id);
     this.ready           = false;
     this.present         = true;
 
@@ -316,7 +315,7 @@ BaseAvatar.prototype.setPrinting = function(printing)
  */
 BaseAvatar.prototype.addScore = function(score)
 {
-    this.setRoundScore(this.roundScore + score);
+    this.scorekeeper.addScore(score);
 };
 
 /**
@@ -326,8 +325,7 @@ BaseAvatar.prototype.addScore = function(score)
  */
 BaseAvatar.prototype.resolveScore = function()
 {
-    this.setScore(this.score + this.roundScore);
-    this.roundScore = 0;
+    this.scorekeeper.resolveScore();
 };
 
 /**
@@ -337,7 +335,7 @@ BaseAvatar.prototype.resolveScore = function()
  */
 BaseAvatar.prototype.setRoundScore = function(score)
 {
-    this.roundScore = score;
+    this.scorekeeper.setRoundScore(score);
 };
 
 /**
@@ -347,7 +345,7 @@ BaseAvatar.prototype.setRoundScore = function(score)
  */
 BaseAvatar.prototype.setScore = function(score)
 {
-    this.score = score;
+    this.scorekeeper.setScore(score);
 };
 
 /**
@@ -366,6 +364,7 @@ BaseAvatar.prototype.setColor = function(color)
 BaseAvatar.prototype.clear = function()
 {
     this.bonusStack.clear();
+    this.scorekeeper.clear();
 
     this.x                   = this.radius;
     this.y                   = this.radius;
@@ -373,7 +372,6 @@ BaseAvatar.prototype.clear = function()
     this.velocityX           = 0;
     this.velocityY           = 0;
     this.angularVelocity     = 0;
-    this.roundScore          = 0;
     this.velocity            = BaseAvatar.prototype.velocity;
     this.alive               = true;
     this.printing            = false;
@@ -412,6 +410,6 @@ BaseAvatar.prototype.serialize = function()
         id: this.id,
         name: this.name,
         color: this.color,
-        score: this.score
+        scorekeeper: this.scorekeeper
     };
 };

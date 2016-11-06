@@ -106,7 +106,7 @@ Game.prototype.isTieBreak = function()
 {
     var maxScore = this.maxScore;
 
-    return this.avatars.match(function () { return this.score >= maxScore; }) !== null;
+    return this.avatars.match(function () { return this.scorekeeper.score >= maxScore; }) !== null;
 };
 
 /**

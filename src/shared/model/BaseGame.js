@@ -286,7 +286,7 @@ BaseGame.prototype.sortAvatars = function(avatars)
 {
     avatars = typeof(avatars) !== 'undefined' ? avatars : this.avatars;
 
-    avatars.sort(function (a, b) { return a.score > b.score ? -1 : (a.score < b.score ? 1 : 0); });
+    avatars.sort(function (a, b) { return a.scorekeeper.score > b.scorekeeper.score ? -1 : (a.scorekeeper.score < b.scorekeeper.score ? 1 : 0); });
 
     return avatars;
 };

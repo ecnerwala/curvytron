@@ -88,7 +88,7 @@
                                     <tr ng-repeat="avatar in ::avatars track by avatar.id">
                                         <td class="rank">{{ ::($index+1) }}</td>
                                         <td class="name"><span style="color: {{ ::avatar.player.color }}">{{ ::avatar.name }}</span></td>
-                                        <td class="points"><strong>{{ ::avatar.score }}</strong> points</td>
+                                        <td class="points"><strong>{{ ::avatar.scorekeeper.score }}</strong> points</td>
                                     </tr>
                                 </tbody>
                             </table>

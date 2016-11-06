@@ -153,7 +153,7 @@ PlayerListController.prototype.onDie = function(e)
  */
 PlayerListController.prototype.updateScore = function(avatar)
 {
-    this.getElements(avatar).score.innerHTML = avatar.score;
+    this.getElements(avatar).score.innerHTML = avatar.scorekeeper.score;
 };
 
 
@@ -164,7 +164,7 @@ PlayerListController.prototype.updateScore = function(avatar)
  */
 PlayerListController.prototype.updateRoundScore = function(avatar)
 {
-    this.getElements(avatar).roundScore.innerHTML = avatar.roundScore ? '+' + avatar.roundScore : '';
+    this.getElements(avatar).roundScore.innerHTML = avatar.scorekeeper.roundScore ? '+' + avatar.scorekeeper.roundScore : '';
 };
 
 /**

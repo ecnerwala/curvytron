@@ -154,8 +154,8 @@ GameController.prototype.attachEvents = function(client)
         avatar.on('position', this.onPosition);
         avatar.on('angle', this.onAngle);
         avatar.on('point', this.onPoint);
-        avatar.on('score', this.onScore);
-        avatar.on('score:round', this.onRoundScore);
+        avatar.scorekeeper.on('score', this.onScore);
+        avatar.scorekeeper.on('score:round', this.onRoundScore);
         avatar.on('property', this.onProperty);
         avatar.bonusStack.on('change', this.onBonusStack);
     }
@@ -183,8 +183,8 @@ GameController.prototype.detachEvents = function(client)
             avatar.removeListener('die', this.onDie);
             avatar.removeListener('position', this.onPosition);
             avatar.removeListener('point', this.onPoint);
-            avatar.removeListener('score', this.onScore);
-            avatar.removeListener('score:round', this.onRoundScore);
+            avatar.scorekeeper.removeListener('score', this.onScore);
+            avatar.scorekeeper.removeListener('score:round', this.onRoundScore);
             avatar.removeListener('property', this.onProperty);
             avatar.bonusStack.removeListener('change', this.onBonusStack);
         }
@@ -401,21 +401,23 @@ GameController.prototype.onBonusClear = function(bonus)
 /**
  * On score
  *
- * @param {Avatar} avatar
+ * @param {Score} score
  */
-GameController.prototype.onScore = function(avatar)
+GameController.prototype.onScore = function(score)
 {
-    this.socketGroup.addEvent('score', [avatar.id, avatar.score]);
+    console.log('onScore() for score', score.id);
+    this.socketGroup.addEvent('score', [score.id, score.score]);
 };
 
 /**
  * On round score
  *
- * @param {Avatar} avatar
+ * @param {Score} score
  */
-GameController.prototype.onRoundScore = function(avatar)
+GameController.prototype.onRoundScore = function(score)
 {
-    this.socketGroup.addEvent('score:round', [avatar.id, avatar.roundScore]);
+    console.log('onRoundScore() for score', score.id);
+    this.socketGroup.addEvent('score:round', [score.id, score.roundScore]);
 };
 
 /**

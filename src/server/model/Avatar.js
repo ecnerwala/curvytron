@@ -189,28 +189,6 @@ Avatar.prototype.die = function(body)
 };
 
 /**
- * Set score
- *
- * @param {Number} score
- */
-Avatar.prototype.setScore = function(score)
-{
-    BaseAvatar.prototype.setScore.call(this, score);
-    this.emit('score', this);
-};
-
-/**
- * Set round score
- *
- * @param {Number} score
- */
-Avatar.prototype.setRoundScore = function(score)
-{
-    BaseAvatar.prototype.setRoundScore.call(this, score);
-    this.emit('score:round', this);
-};
-
-/**
  * Clear
  */
 Avatar.prototype.clear = function()

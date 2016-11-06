@@ -127,11 +127,11 @@ Avatar.prototype.setColor = function(color)
  */
 Avatar.prototype.setScore = function(score)
 {
-    var diff = score - this.score;
+    var diff = score - this.scorekeeper.score;
 
     BaseAvatar.prototype.setScore.call(this, score);
 
-    this.roundScore = diff;
+    this.scorekeeper.roundScore = diff;
 };
 
 /**
